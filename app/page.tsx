@@ -151,7 +151,7 @@ export default function Home() {
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">1. Data Import and Visualization</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">Data Import and Visualization</h2>
         <p className="text-sm mb-3">
           Every good analysis starts with understanding your data. Here, I'm loading historical TikTok view counts
           that I've collected over time. The beauty of time series data is that it tells a story - you can literally
@@ -187,7 +187,7 @@ plt.show()`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">2. Seasonal Decomposition</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">Seasonal Decomposition</h2>
         <p className="text-sm mb-3">
           This is where things get interesting. TikTok views aren't random - they follow patterns. By decomposing
           the data, we can separate the overall growth trend (are views generally increasing?), seasonal patterns
@@ -209,7 +209,7 @@ plt.show()`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">3. Stationarity Testing and Differencing</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">Stationarity Testing and Differencing</h2>
         <p className="text-sm mb-3">
           Here's a crucial but often overlooked step. "Stationarity" means the data's patterns stay consistent over time.
           Imagine trying to predict waves if the ocean level kept rising - you'd need to account for that rise first!
@@ -260,7 +260,7 @@ plt.show()`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">4. ACF and PACF Analysis</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">ACF and PACF Analysis</h2>
         <p className="text-sm mb-3">
           ACF and PACF help us find patterns. Think of them as asking:
         </p>
@@ -299,7 +299,7 @@ plt.show()`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">5. Parameter Selection</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">Parameter Selection</h2>
         <p className="text-sm mb-3">
           Now we automatically find the best model settings. The code counts how many "lags" (past time periods)
           significantly affect future values. It's like asking "How far back in history do we need to look?"
@@ -335,7 +335,7 @@ print(q, Q)  # Output: 2 2`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">6. SARIMAX Model Fitting</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">SARIMAX Model Fitting</h2>
         <p className="text-sm mb-3">
           We fit the SARIMAX model with the identified parameters:
         </p>
@@ -351,7 +351,7 @@ print(p, d, q, P, D, Q)  # Output: 3 2 2 3 0 2`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">7. Generating Forecasts</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">Generating Forecasts</h2>
         <p className="text-sm mb-3">
           We generate 12-month forecasts with confidence intervals:
         </p>
@@ -380,7 +380,7 @@ plt.show()`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">8. Transforming Back to Original Scale</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">Transforming Back to Original Scale</h2>
         <p className="text-sm mb-3">
           We integrate the differenced forecasts back to the original scale:
         </p>
@@ -411,7 +411,7 @@ plt.show()`}</pre>
       </section>
 
       <section className="mb-8 sm:mb-10">
-        <h2 className="text-base sm:text-lg font-bold mb-3">9. Model Evaluation</h2>
+        <h2 className="text-base sm:text-lg font-bold mb-3">Model Evaluation</h2>
         <p className="text-sm mb-3">
           Finally, we evaluate the model performance using MAE and MSE:
         </p>
