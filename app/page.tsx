@@ -258,9 +258,15 @@ plt.show()`}</pre>
           These plots help identify the optimal p and q parameters for the ARIMA model. The significant lags (bars outside the confidence interval)
           indicate which past values have predictive power.
         </p>
-        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
-          <img src="/output4.png" alt="ACF and PACF plots with confidence intervals" className="w-full rounded mb-2" />
-          <p className="text-xs text-gray-500 italic">ACF (top) and PACF (bottom) plots with 95% confidence intervals (blue shaded areas) and significant lags at positions 1-3</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+          <div className="border border-gray-600 rounded p-2 sm:p-3">
+            <img src="/output4.png" alt="ACF and PACF plots with confidence intervals" className="w-full rounded mb-2" />
+            <p className="text-xs text-gray-500 italic">ACF (top) and PACF (bottom) plots with 95% confidence intervals (blue shaded areas) and significant lags at positions 1-3</p>
+          </div>
+          <div className="border border-gray-600 rounded p-2 sm:p-3">
+            <img src="/output5.png" alt="Forecast with confidence intervals on differenced data" className="w-full rounded mb-2" />
+            <p className="text-xs text-gray-500 italic">Forecast on differenced data: blue line (historical), red dashed line (12-month forecast), pink shaded area (95% confidence interval)</p>
+          </div>
         </div>
       </section>
 
@@ -336,8 +342,8 @@ plt.show()`}</pre>
           This creates a visualization showing the observed differenced data and the forecast with confidence bands.
         </p>
         <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
-          <img src="/output5.png" alt="Forecast with confidence intervals on differenced data" className="w-full rounded mb-2" />
-          <p className="text-xs text-gray-500 italic">Forecast on differenced data: blue line (historical), red dashed line (12-month forecast), pink shaded area (95% confidence interval)</p>
+          <img src="/output6.png" alt="Forecast plot showing differenced data with confidence intervals" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">Forecast on differenced data: blue line (observed), red line (forecast), pink shaded area (95% confidence interval)</p>
         </div>
       </section>
 
@@ -366,8 +372,8 @@ plt.show()`}</pre>
           This transforms the differenced predictions back to actual view counts for interpretation.
         </p>
         <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
-          <img src="/output6.png" alt="Final forecast on original scale showing predicted TikTok views" className="w-full rounded mb-2" />
-          <p className="text-xs text-gray-500 italic">Final forecast: blue line (historical TikTok views Jan-Mar 2022), red line (12-month forecast showing predicted growth through Feb 2023)</p>
+          <img src="/output7.png" alt="Final forecast plot showing observed vs predicted TikTok views" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">Final forecast plot: blue line (observed historical TikTok views), red line (12-month forecast predictions)</p>
         </div>
       </section>
 
