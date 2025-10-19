@@ -170,10 +170,11 @@ plt.show()`}</pre>
           This visualization immediately reveals patterns - you might notice weekly cycles (weekends vs weekdays),
           monthly trends, or even sudden spikes when content goes viral. It's like looking at the heartbeat of social media engagement.
         </p>
-        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-2">
           <img src="/output1.png" alt="Time series plot showing TikTok views over time" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Time series plot showing TikTok views from Jan 1 to Mar 1, 2022 with growth to peak of 20,000 views on Feb 20, then decline</p>
         </div>
+        <p className="text-xs text-gray-600 mb-3"><strong>What this shows:</strong> The raw data has a clear upward trend (non-stationary) - views consistently grow over time rather than fluctuating around a constant mean. This trend needs to be removed before modeling.</p>
       </section>
 
       <section className="mb-8 sm:mb-10">
@@ -190,10 +191,11 @@ plt.show()`}</pre>
         <p className="text-xs text-gray-600 mb-3">
           This decomposes the time series into trend, seasonal, and residual components using an additive model.
         </p>
-        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-2">
           <img src="/output2.png" alt="Seasonal decomposition showing trend, seasonal, and residual components" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Four-panel decomposition: original observed data, trend component, seasonal component, and residual (random noise) component</p>
         </div>
+        <p className="text-xs text-gray-600 mb-3"><strong>What this shows:</strong> The trend panel shows steady growth over time. The seasonal panel reveals repeating patterns (weekly/monthly cycles). The residual panel shows random fluctuations after removing trend and seasonality - this is what's left for the model to learn from.</p>
       </section>
 
       <section className="mb-8 sm:mb-10">
@@ -232,10 +234,11 @@ plt.show()`}</pre>
           was required, which means we had to look at the "change in the rate of change" - similar to how physicists look at
           acceleration rather than just velocity. This transformation is essential for accurate predictions.
         </p>
-        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-2">
           <img src="/output3.png" alt="Differenced time series showing stationary data" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Differenced time series oscillating around zero with no clear trend, ready for ARIMA modeling</p>
         </div>
+        <p className="text-xs text-gray-600 mb-3"><strong>What this shows:</strong> After double differencing, the data now oscillates around zero with no upward/downward trend. This "stationary" data is suitable for ARIMA modeling because the statistical properties (mean, variance) are now constant over time.</p>
       </section>
 
       <section className="mb-8 sm:mb-10">
@@ -268,6 +271,8 @@ plt.show()`}</pre>
             <p className="text-xs text-gray-500 italic">Forecast on differenced data: blue line (historical), red dashed line (12-month forecast), pink shaded area (95% confidence interval)</p>
           </div>
         </div>
+        <p className="text-xs text-gray-600 mb-2"><strong>How to read ACF/PACF:</strong> Bars extending outside the blue shaded area are "significant" - they indicate that past values at those time lags help predict future values. The ACF shows overall correlation, while PACF shows direct correlation.</p>
+        <p className="text-xs text-gray-600 mb-3"><strong>What the forecast shows:</strong> The model's predictions on the differenced (stationary) data. The pink shaded area shows uncertainty - we're 95% confident the true values will fall within this range.</p>
       </section>
 
       <section className="mb-8 sm:mb-10">
@@ -341,10 +346,11 @@ plt.show()`}</pre>
         <p className="text-xs text-gray-600 mb-3">
           This creates a visualization showing the observed differenced data and the forecast with confidence bands.
         </p>
-        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-2">
           <img src="/output6.png" alt="Forecast plot showing differenced data with confidence intervals" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Forecast on differenced data: blue line (observed), red line (forecast), pink shaded area (95% confidence interval)</p>
         </div>
+        <p className="text-xs text-gray-600 mb-3"><strong>What this shows:</strong> This is the "raw" forecast output from the SARIMAX model on the differenced data. The red line shows the model's predictions, but these need to be transformed back to actual view counts for interpretation.</p>
       </section>
 
       <section className="mb-8 sm:mb-10">
@@ -371,10 +377,11 @@ plt.show()`}</pre>
         <p className="text-xs text-gray-600 mb-3">
           This transforms the differenced predictions back to actual view counts for interpretation.
         </p>
-        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-2">
           <img src="/output7.png" alt="Final forecast plot showing observed vs predicted TikTok views" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Final forecast plot: blue line (observed historical TikTok views), red line (12-month forecast predictions)</p>
         </div>
+        <p className="text-xs text-gray-600 mb-3"><strong>What this shows:</strong> The final business-ready forecast! Blue shows actual historical TikTok views, red shows the model's predictions for the next 12 months. The model predicts continued growth, which content creators can use for planning.</p>
       </section>
 
       <section className="mb-8 sm:mb-10">
