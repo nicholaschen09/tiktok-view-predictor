@@ -2,18 +2,18 @@
 
 export default function Home() {
   return (
-    <main className="max-w-2xl mx-auto px-6 py-12">
-      <header className="mb-12">
-        <h1 className="text-2xl font-bold mb-2">TikTok View Predictor</h1>
-        <p className="text-base text-gray-600">Advanced Time Series Forecasting with SARIMAX</p>
+    <main className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <header className="mb-8 sm:mb-12 text-center sm:text-left">
+        <h1 className="text-xl sm:text-2xl font-bold mb-2">TikTok View Predictor</h1>
+        <p className="text-sm sm:text-base text-gray-600">Advanced Time Series Forecasting with SARIMAX</p>
         <p className="mt-3">
           <a
             href="https://github.com/nicholaschen09/tiktok-view-predictor"
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 text-sm rounded-lg transition-colors"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 text-xs rounded-lg transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
             github
@@ -21,8 +21,8 @@ export default function Home() {
         </p>
       </header>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">Overview</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">Overview</h2>
         <p className="text-sm mb-3">
           Ever wondered how viral a TikTok video might become? Or how content creators can anticipate their audience growth?
           This project tackles exactly that challenge. I built a sophisticated machine learning model that analyzes historical
@@ -39,9 +39,17 @@ export default function Home() {
           <li><strong>Seasonal (S):</strong> Captures repeating patterns like holiday spikes</li>
         </ul>
         <p className="text-sm mb-3">
-          The mathematical formula is: <code className="bg-gray-100 px-1 text-xs">ARIMA(p,d,q) × (P,D,Q)s</code> where each letter
-          represents how far back we look and how we transform the data.
+          The mathematical formula is: <code className="bg-gray-100 px-1 text-xs">ARIMA(p,d,q) × (P,D,Q)s</code> where:
         </p>
+        <ul className="text-xs mb-3 ml-4 list-disc text-gray-600">
+          <li><strong>p</strong> = number of past values to use (AutoRegressive order)</li>
+          <li><strong>d</strong> = how many times to difference the data (Integration order)</li>
+          <li><strong>q</strong> = number of past errors to use (Moving Average order)</li>
+          <li><strong>P</strong> = seasonal autoregressive order</li>
+          <li><strong>D</strong> = seasonal differencing order</li>
+          <li><strong>Q</strong> = seasonal moving average order</li>
+          <li><strong>s</strong> = seasonal period (12 months in our case)</li>
+        </ul>
         <p className="text-sm mb-3">
           The model achieves approximately 98.5% accuracy, which in practical terms means content creators and marketers
           can make data-driven decisions about when to post, what content strategies to pursue, and how to allocate
@@ -49,14 +57,14 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">The Source Data</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">The Source Data</h2>
         <p className="text-sm mb-3">
           The model is trained on real TikTok view data collected from January to March 2022. Here's a sample of the actual data
           showing the daily view counts that form the foundation of our predictions:
         </p>
         <div className="bg-gray-50 border border-gray-200 rounded p-3 mb-3 max-h-64 overflow-y-auto">
-          <table className="text-xs font-mono w-full">
+          <table className="text-xs font-mono w-full min-w-[280px]">
             <thead>
               <tr className="border-b border-gray-300">
                 <th className="text-left pr-6 pb-2">Date</th>
@@ -133,14 +141,14 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">1. Data Import and Visualization</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">1. Data Import and Visualization</h2>
         <p className="text-sm mb-3">
           Every good analysis starts with understanding your data. Here, I'm loading historical TikTok view counts
           that I've collected over time. The beauty of time series data is that it tells a story - you can literally
           see trends, spikes from viral content, and seasonal patterns emerge when you plot it:
         </p>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`import pandas as pd
 import numpy as np
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
@@ -162,43 +170,43 @@ plt.show()`}</pre>
           This visualization immediately reveals patterns - you might notice weekly cycles (weekends vs weekdays),
           monthly trends, or even sudden spikes when content goes viral. It's like looking at the heartbeat of social media engagement.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-3 mb-3">
-          <p className="text-xs text-gray-500 italic">📊 Visualization: Time series plot showing TikTok views over time with clear upward trend and seasonal patterns</p>
+        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+          <img src="/output1.png" alt="Time series plot showing TikTok views over time" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">Time series plot showing TikTok views from Jan 1 to Mar 1, 2022 with growth to peak of 20,000 views on Feb 20, then decline</p>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">2. Seasonal Decomposition</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">2. Seasonal Decomposition</h2>
         <p className="text-sm mb-3">
           This is where things get interesting. TikTok views aren't random - they follow patterns. By decomposing
           the data, we can separate the overall growth trend (are views generally increasing?), seasonal patterns
           (do certain months consistently perform better?), and random noise:
         </p>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`seasonal_decompose(data["TikTokViews"], model="additive").plot()
 plt.show()`}</pre>
         </div>
         <p className="text-xs text-gray-600 mb-3">
           This decomposes the time series into trend, seasonal, and residual components using an additive model.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-3 mb-3">
-          <p className="text-xs text-gray-500 italic">📊 Visualization: Four-panel decomposition showing original data, trend component (steady growth), seasonal patterns (regular cycles), and residual noise</p>
+        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+          <img src="/output2.png" alt="Seasonal decomposition showing trend, seasonal, and residual components" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">Four-panel decomposition: original observed data, trend component, seasonal component, and residual (random noise) component</p>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">3. Stationarity Testing and Differencing</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">3. Stationarity Testing and Differencing</h2>
         <p className="text-sm mb-3">
           Here's a crucial but often overlooked step. "Stationarity" means the data's patterns stay consistent over time.
           Imagine trying to predict waves if the ocean level kept rising - you'd need to account for that rise first!
           Since TikTok is constantly growing (non-stationary), we use "differencing" - a mathematical transformation:
         </p>
-        <div className="bg-gray-100 p-2 rounded mb-3">
-          <p className="text-xs font-mono mb-1">First Difference: Δy(t) = y(t) - y(t-1)</p>
-          <p className="text-xs font-mono">Second Difference: Δ²y(t) = Δy(t) - Δy(t-1)</p>
-          <p className="text-xs text-gray-600 mt-1">Translation: Instead of "20,000 views", we look at "+200 views from yesterday"</p>
-        </div>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <p className="text-xs mb-1"><strong>First Difference:</strong> Δy(t) = y(t) - y(t-1)</p>
+        <p className="text-xs mb-1"><strong>Second Difference:</strong> Δ²y(t) = Δy(t) - Δy(t-1)</p>
+        <p className="text-xs text-gray-600 mb-3">Translation: Instead of "20,000 views", we look at "+200 views from yesterday"</p>
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`def check_stationarity(timeseries):
     # Augmented Dickey-Fuller test checks if data is predictable
     # It tests the null hypothesis: H₀: series has a unit root (non-stationary)
@@ -224,13 +232,14 @@ plt.show()`}</pre>
           was required, which means we had to look at the "change in the rate of change" - similar to how physicists look at
           acceleration rather than just velocity. This transformation is essential for accurate predictions.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-3 mb-3">
-          <p className="text-xs text-gray-500 italic">📊 Visualization: Differenced time series oscillating around zero, showing successful stationarity transformation</p>
+        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+          <img src="/output3.png" alt="Differenced time series showing stationary data" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">Differenced time series oscillating around zero with no clear trend, ready for ARIMA modeling</p>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">4. ACF and PACF Analysis</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">4. ACF and PACF Analysis</h2>
         <p className="text-sm mb-3">
           ACF and PACF help us find patterns. Think of them as asking:
         </p>
@@ -238,11 +247,9 @@ plt.show()`}</pre>
           <li><strong>ACF:</strong> "How correlated is today with 1 day ago, 2 days ago, etc?"</li>
           <li><strong>PACF:</strong> "What's the DIRECT correlation, removing indirect effects?"</li>
         </ul>
-        <div className="bg-gray-100 p-2 rounded mb-3 text-xs">
-          <p className="font-mono">ACF formula: ρ(k) = Cov(yₜ, yₜ₋ₖ) / Var(yₜ)</p>
-          <p className="text-gray-600 mt-1">Measures correlation between values k periods apart</p>
-        </div>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <p className="text-xs mb-1"><strong>ACF formula:</strong> ρ(k) = Cov(yₜ, yₜ₋ₖ) / Var(yₜ)</p>
+        <p className="text-xs text-gray-600 mb-3">Measures correlation between values k periods apart</p>
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`plot_acf(diff_data)
 plot_pacf(diff_data)
 plt.show()`}</pre>
@@ -251,18 +258,19 @@ plt.show()`}</pre>
           These plots help identify the optimal p and q parameters for the ARIMA model. The significant lags (bars outside the confidence interval)
           indicate which past values have predictive power.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-3 mb-3">
-          <p className="text-xs text-gray-500 italic">📊 Visualization: ACF and PACF correlograms with confidence intervals showing significant lags at positions 1-3</p>
+        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+          <img src="/output4.png" alt="ACF and PACF plots with confidence intervals" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">ACF (top) and PACF (bottom) plots with 95% confidence intervals (blue shaded areas) and significant lags at positions 1-3</p>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">5. Parameter Selection</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">5. Parameter Selection</h2>
         <p className="text-sm mb-3">
           Now we automatically find the best model settings. The code counts how many "lags" (past time periods)
           significantly affect future values. It's like asking "How far back in history do we need to look?"
         </p>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`pacf_values, confint = pacf(diff_data, alpha=0.05, method="ywmle")
 confint = confint - pacf_values[:, None]
 significant_lags = np.where((pacf_values < confint[:, 0]) | (pacf_values > confint[:,1]))
@@ -281,17 +289,20 @@ print(q, Q)  # Output: 2 2`}</pre>
           Results decoded: p=3 (use 3 previous days), d=2 (difference twice), q=2 (use 2 error terms),
           P=3, Q=2 for seasonal (12-month) patterns. Our final model equation:
         </p>
-        <div className="bg-gray-100 p-2 rounded mb-3 text-xs font-mono">
-          (1-φ₁L-φ₂L²-φ₃L³)(1-Φ₁L¹²-Φ₂L²⁴-Φ₃L³⁶)Δ²yₜ = (1+θ₁L+θ₂L²)(1+Θ₁L¹²+Θ₂L²⁴)εₜ
-        </div>
+        <p className="text-xs mb-1"><strong>SARIMAX Model Equation (simplified):</strong></p>
+        <p className="text-xs mb-2">ARIMA(3,2,2) × SARIMA(3,0,2,12)</p>
+        <p className="text-xs text-gray-600 mb-1">In plain terms:</p>
+        <p className="text-xs text-gray-600 mb-1">• Use 3 previous days + 2 error corrections</p>
+        <p className="text-xs text-gray-600 mb-1">• Apply double differencing to remove trends</p>
+        <p className="text-xs text-gray-600 mb-3">• Account for 12-month seasonal patterns</p>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">6. SARIMAX Model Fitting</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">6. SARIMAX Model Fitting</h2>
         <p className="text-sm mb-3">
           We fit the SARIMAX model with the identified parameters:
         </p>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`D = 0
 model = SARIMAX(diff_data, order=(p, d, q), seasonal_order=(P, D, Q, 12))
 future = model.fit()
@@ -302,12 +313,12 @@ print(p, d, q, P, D, Q)  # Output: 3 2 2 3 0 2`}</pre>
         </p>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">7. Generating Forecasts</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">7. Generating Forecasts</h2>
         <p className="text-sm mb-3">
           We generate 12-month forecasts with confidence intervals:
         </p>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`forecast_periods = 12
 forecast = future.get_forecast(steps=forecast_periods)
 forecast_mean = forecast.predicted_mean
@@ -324,17 +335,18 @@ plt.show()`}</pre>
         <p className="text-xs text-gray-600 mb-3">
           This creates a visualization showing the observed differenced data and the forecast with confidence bands.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-3 mb-3">
-          <p className="text-xs text-gray-500 italic">📊 Visualization: Forecast plot showing historical data (blue), predicted values (red), and 95% confidence interval (pink shaded area)</p>
+        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+          <img src="/output5.png" alt="Forecast with confidence intervals on differenced data" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">Forecast on differenced data: blue line (historical), red dashed line (12-month forecast), pink shaded area (95% confidence interval)</p>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">8. Transforming Back to Original Scale</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">8. Transforming Back to Original Scale</h2>
         <p className="text-sm mb-3">
           We integrate the differenced forecasts back to the original scale:
         </p>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`last = data["TikTokViews"].iloc[-1]
 forecast_og = []
 for i in forecast_mean:
@@ -353,17 +365,18 @@ plt.show()`}</pre>
         <p className="text-xs text-gray-600 mb-3">
           This transforms the differenced predictions back to actual view counts for interpretation.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-3 mb-3">
-          <p className="text-xs text-gray-500 italic">📊 Visualization: Final forecast showing actual TikTok view counts with upward trend projection for the next 12 months</p>
+        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+          <img src="/output6.png" alt="Final forecast on original scale showing predicted TikTok views" className="w-full rounded mb-2" />
+          <p className="text-xs text-gray-500 italic">Final forecast: blue line (historical TikTok views Jan-Mar 2022), red line (12-month forecast showing predicted growth through Feb 2023)</p>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">9. Model Evaluation</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">9. Model Evaluation</h2>
         <p className="text-sm mb-3">
           Finally, we evaluate the model performance using MAE and MSE:
         </p>
-        <div className="bg-gray-100 p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`observed = diff_data[-forecast_periods:]
 
 mae = mean_absolute_error(observed, forecast_mean)
@@ -374,17 +387,28 @@ print(f"MSE: {mse}")  # Output: MSE: 274185965.8119963`}</pre>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">Final Model Output & Performance</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">Final Model Output & Performance</h2>
         <p className="text-sm mb-3">
           Based on the 61 days of training data (January-March 2022), the model successfully learned the patterns and generated
           predictions for the next 12 months. Here's how well it performed:
         </p>
-        <div className="bg-gray-100 p-3 rounded text-xs">
+        <p className="text-sm font-bold mb-2">Understanding the Error Metrics:</p>
+        <div className="mb-3">
+          <p className="text-xs font-semibold">MAE (Mean Absolute Error) = 14,939 views</p>
+          <p className="text-xs text-gray-600 mt-1">Formula: MAE = (1/n) × Σ|actual - predicted|</p>
+          <p className="text-xs text-gray-600">What it means: On average, our predictions are off by about 15,000 views</p>
+          <p className="text-xs text-gray-600">Think of it as: The average "mistake" in our predictions</p>
+        </div>
+        <div className="mb-3">
+          <p className="text-xs font-semibold">MSE (Mean Squared Error) = 274,185,965</p>
+          <p className="text-xs text-gray-600 mt-1">Formula: MSE = (1/n) × Σ(actual - predicted)²</p>
+          <p className="text-xs text-gray-600">What it means: This metric penalizes larger errors more heavily</p>
+          <p className="text-xs text-gray-600">Think of it as: A way to catch when predictions go really wrong</p>
+        </div>
+        <div className="border border-gray-400 p-2 sm:p-3 rounded text-xs">
           <p className="mb-1"><strong>Mean Absolute Error:</strong> 14,939 views</p>
-          <p className="text-xs text-gray-600 ml-4">MAE = (1/n) Σ|actual - predicted| = Average mistake</p>
           <p className="mb-1"><strong>Mean Squared Error:</strong> 274,185,965</p>
-          <p className="text-xs text-gray-600 ml-4">MSE = (1/n) Σ(actual - predicted)² = Penalizes big errors</p>
           <p className="mb-1"><strong>Forecast Range:</strong> 12 months</p>
           <p className="mb-1"><strong>Confidence Interval:</strong> 95%</p>
           <p className="mb-1"><strong>Convergence:</strong> 50 iterations using L-BFGS-B</p>
@@ -393,8 +417,8 @@ print(f"MSE: {mse}")  # Output: MSE: 274185965.8119963`}</pre>
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-lg font-bold mb-3">Key Insights & What I Learned</h2>
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">Key Insights & What I Learned</h2>
         <p className="text-sm mb-3">
           Building this model taught me several fascinating things about TikTok viewing patterns and time series forecasting:
         </p>
@@ -409,50 +433,50 @@ print(f"MSE: {mse}")  # Output: MSE: 274185965.8119963`}</pre>
       </section>
 
       <footer className="mt-16 pt-8 border-t border-gray-300">
-        <p className="text-gray-600 mb-3">
+        <p className="text-xs text-gray-600 mb-3">
           By Nicholas Chen
         </p>
-        <div className="flex gap-2 text-sm">
+        <div className="flex flex-wrap gap-2 text-sm">
           <a
             href="https://github.com/nicholaschen09"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 rounded-lg transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 text-xs rounded-lg transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
             github
           </a>
           <a
             href="https://x.com/nicholaschen__"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 rounded-lg transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 text-xs rounded-lg transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
             twitter
           </a>
           <a
             href="https://nicholaschen.me"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 rounded-lg transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 text-xs rounded-lg transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
             </svg>
             website
           </a>
           <a
             href="https://www.linkedin.com/in/nicholas-chen-85886726a/"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 rounded-lg transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-rose-100 hover:bg-rose-200 text-gray-700 text-xs rounded-lg transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
             </svg>
             linkedin
