@@ -148,7 +148,7 @@ export default function Home() {
           that I've collected over time. The beauty of time series data is that it tells a story - you can literally
           see trends, spikes from viral content, and seasonal patterns emerge when you plot it:
         </p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`import pandas as pd
 import numpy as np
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
@@ -170,7 +170,7 @@ plt.show()`}</pre>
           This visualization immediately reveals patterns - you might notice weekly cycles (weekends vs weekdays),
           monthly trends, or even sudden spikes when content goes viral. It's like looking at the heartbeat of social media engagement.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
           <img src="/output1.png" alt="Time series plot showing TikTok views over time" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Time series plot showing TikTok views from Jan 1 to Mar 1, 2022 with growth to peak of 20,000 views on Feb 20, then decline</p>
         </div>
@@ -183,14 +183,14 @@ plt.show()`}</pre>
           the data, we can separate the overall growth trend (are views generally increasing?), seasonal patterns
           (do certain months consistently perform better?), and random noise:
         </p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`seasonal_decompose(data["TikTokViews"], model="additive").plot()
 plt.show()`}</pre>
         </div>
         <p className="text-xs text-gray-600 mb-3">
           This decomposes the time series into trend, seasonal, and residual components using an additive model.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
           <img src="/output2.png" alt="Seasonal decomposition showing trend, seasonal, and residual components" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Four-panel decomposition: original observed data, trend component, seasonal component, and residual (random noise) component</p>
         </div>
@@ -206,7 +206,7 @@ plt.show()`}</pre>
         <p className="text-xs mb-1"><strong>First Difference:</strong> Δy(t) = y(t) - y(t-1)</p>
         <p className="text-xs mb-1"><strong>Second Difference:</strong> Δ²y(t) = Δy(t) - Δy(t-1)</p>
         <p className="text-xs text-gray-600 mb-3">Translation: Instead of "20,000 views", we look at "+200 views from yesterday"</p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`def check_stationarity(timeseries):
     # Augmented Dickey-Fuller test checks if data is predictable
     # It tests the null hypothesis: H₀: series has a unit root (non-stationary)
@@ -232,7 +232,7 @@ plt.show()`}</pre>
           was required, which means we had to look at the "change in the rate of change" - similar to how physicists look at
           acceleration rather than just velocity. This transformation is essential for accurate predictions.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
           <img src="/output3.png" alt="Differenced time series showing stationary data" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Differenced time series oscillating around zero with no clear trend, ready for ARIMA modeling</p>
         </div>
@@ -249,7 +249,7 @@ plt.show()`}</pre>
         </ul>
         <p className="text-xs mb-1"><strong>ACF formula:</strong> ρ(k) = Cov(yₜ, yₜ₋ₖ) / Var(yₜ)</p>
         <p className="text-xs text-gray-600 mb-3">Measures correlation between values k periods apart</p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`plot_acf(diff_data)
 plot_pacf(diff_data)
 plt.show()`}</pre>
@@ -258,7 +258,7 @@ plt.show()`}</pre>
           These plots help identify the optimal p and q parameters for the ARIMA model. The significant lags (bars outside the confidence interval)
           indicate which past values have predictive power.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
           <img src="/output4.png" alt="ACF and PACF plots with confidence intervals" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">ACF (top) and PACF (bottom) plots with 95% confidence intervals (blue shaded areas) and significant lags at positions 1-3</p>
         </div>
@@ -270,7 +270,7 @@ plt.show()`}</pre>
           Now we automatically find the best model settings. The code counts how many "lags" (past time periods)
           significantly affect future values. It's like asking "How far back in history do we need to look?"
         </p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`pacf_values, confint = pacf(diff_data, alpha=0.05, method="ywmle")
 confint = confint - pacf_values[:, None]
 significant_lags = np.where((pacf_values < confint[:, 0]) | (pacf_values > confint[:,1]))
@@ -302,7 +302,7 @@ print(q, Q)  # Output: 2 2`}</pre>
         <p className="text-sm mb-3">
           We fit the SARIMAX model with the identified parameters:
         </p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`D = 0
 model = SARIMAX(diff_data, order=(p, d, q), seasonal_order=(P, D, Q, 12))
 future = model.fit()
@@ -318,7 +318,7 @@ print(p, d, q, P, D, Q)  # Output: 3 2 2 3 0 2`}</pre>
         <p className="text-sm mb-3">
           We generate 12-month forecasts with confidence intervals:
         </p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`forecast_periods = 12
 forecast = future.get_forecast(steps=forecast_periods)
 forecast_mean = forecast.predicted_mean
@@ -335,7 +335,7 @@ plt.show()`}</pre>
         <p className="text-xs text-gray-600 mb-3">
           This creates a visualization showing the observed differenced data and the forecast with confidence bands.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
           <img src="/output5.png" alt="Forecast with confidence intervals on differenced data" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Forecast on differenced data: blue line (historical), red dashed line (12-month forecast), pink shaded area (95% confidence interval)</p>
         </div>
@@ -346,7 +346,7 @@ plt.show()`}</pre>
         <p className="text-sm mb-3">
           We integrate the differenced forecasts back to the original scale:
         </p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`last = data["TikTokViews"].iloc[-1]
 forecast_og = []
 for i in forecast_mean:
@@ -365,7 +365,7 @@ plt.show()`}</pre>
         <p className="text-xs text-gray-600 mb-3">
           This transforms the differenced predictions back to actual view counts for interpretation.
         </p>
-        <div className="bg-gray-50 border border-gray-200 rounded p-2 sm:p-3 mb-3">
+        <div className="border border-gray-600 rounded p-2 sm:p-3 mb-3">
           <img src="/output6.png" alt="Final forecast on original scale showing predicted TikTok views" className="w-full rounded mb-2" />
           <p className="text-xs text-gray-500 italic">Final forecast: blue line (historical TikTok views Jan-Mar 2022), red line (12-month forecast showing predicted growth through Feb 2023)</p>
         </div>
@@ -376,7 +376,7 @@ plt.show()`}</pre>
         <p className="text-sm mb-3">
           Finally, we evaluate the model performance using MAE and MSE:
         </p>
-        <div className="bg-gray-100 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
+        <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`observed = diff_data[-forecast_periods:]
 
 mae = mean_absolute_error(observed, forecast_mean)
