@@ -39,8 +39,12 @@ export default function Home() {
           <li><strong>Seasonal (S):</strong> Captures repeating patterns like holiday spikes</li>
         </ul>
         <p className="text-sm mb-3">
-          The mathematical formula is: <code className="bg-gray-100 px-1 text-xs">ARIMA(p,d,q) × (P,D,Q)s</code> where:
+          The mathematical formula is:
         </p>
+        <div className="text-center mb-3">
+          <span className="text-lg font-medium" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>ARIMA(p,d,q) × (P,D,Q)s</span>
+        </div>
+        <p className="text-sm mb-3">where:</p>
         <ul className="text-xs mb-3 ml-4 list-disc text-gray-600">
           <li><strong>p</strong> = number of past values to use (AutoRegressive order)</li>
           <li><strong>d</strong> = how many times to difference the data (Integration order)</li>
@@ -211,9 +215,17 @@ plt.show()`}</pre>
           Imagine trying to predict waves if the ocean level kept rising - you'd need to account for that rise first!
           Since TikTok is constantly growing (non-stationary), we use "differencing" - a mathematical transformation:
         </p>
-        <p className="text-xs mb-1"><strong>First Difference:</strong> Δy(t) = y(t) - y(t-1)</p>
-        <p className="text-xs mb-1"><strong>Second Difference:</strong> Δ²y(t) = Δy(t) - Δy(t-1)</p>
-        <p className="text-xs text-gray-600 mb-3">Translation: Instead of "20,000 views", we look at "+200 views from yesterday"</p>
+        <div className="mb-3">
+          <p className="text-sm mb-2 font-semibold"><strong>First Difference:</strong></p>
+          <div className="text-center mb-3">
+            <span className="text-lg font-medium" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>Δy(t) = y(t) - y(t-1)</span>
+          </div>
+          <p className="text-sm mb-2 font-semibold"><strong>Second Difference:</strong></p>
+          <div className="text-center mb-3">
+            <span className="text-lg font-medium" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>Δ²y(t) = Δy(t) - Δy(t-1)</span>
+          </div>
+        </div>
+        <p className="text-sm text-gray-600 mb-3">Translation: Instead of "20,000 views", we look at "+200 views from yesterday"</p>
         <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`def check_stationarity(timeseries):
     # Augmented Dickey-Fuller test checks if data is predictable
@@ -256,8 +268,13 @@ plt.show()`}</pre>
           <li><strong>ACF:</strong> "How correlated is today with 1 day ago, 2 days ago, etc?"</li>
           <li><strong>PACF:</strong> "What's the DIRECT correlation, removing indirect effects?"</li>
         </ul>
-        <p className="text-xs mb-1"><strong>ACF formula:</strong> ρ(k) = Cov(yₜ, yₜ₋ₖ) / Var(yₜ)</p>
-        <p className="text-xs text-gray-600 mb-3">Measures correlation between values k periods apart</p>
+        <div className="mb-3">
+          <p className="text-sm mb-2 font-semibold"><strong>ACF Formula:</strong></p>
+          <div className="text-center mb-2">
+            <span className="text-lg font-medium" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>ρ(k) = Cov(yₜ, yₜ₋ₖ) / Var(yₜ)</span>
+          </div>
+          <p className="text-sm text-gray-600 text-center">Measures correlation between values k periods apart</p>
+        </div>
         <div className="bg-gray-200 p-2 sm:p-3 rounded font-mono text-xs mb-3 overflow-x-auto">
           <pre>{`plot_acf(diff_data)
 plot_pacf(diff_data)
@@ -306,12 +323,15 @@ print(q, Q)  # Output: 2 2`}</pre>
           Results decoded: p=3 (use 3 previous days), d=2 (difference twice), q=2 (use 2 error terms),
           P=3, Q=2 for seasonal (12-month) patterns. Our final model equation:
         </p>
-        <p className="text-xs mb-1"><strong>SARIMAX Model Equation (simplified):</strong></p>
-        <p className="text-xs mb-2">ARIMA(3,2,2) × SARIMA(3,0,2,12)</p>
-        <p className="text-xs text-gray-600 mb-1">In plain terms:</p>
-        <p className="text-xs text-gray-600 mb-1">• Use 3 previous days + 2 error corrections</p>
-        <p className="text-xs text-gray-600 mb-1">• Apply double differencing to remove trends</p>
-        <p className="text-xs text-gray-600 mb-3">• Account for 12-month seasonal patterns</p>
+        <div className="mb-3">
+          <div className="text-center mb-4">
+            <span className="text-lg font-medium" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>ARIMA(3,2,2) × SARIMA(3,0,2,12)</span>
+          </div>
+        </div>
+        <p className="text-sm text-gray-600 mb-1">In plain terms:</p>
+        <p className="text-sm text-gray-600 mb-1">• Use 3 previous days + 2 error corrections</p>
+        <p className="text-sm text-gray-600 mb-1">• Apply double differencing to remove trends</p>
+        <p className="text-sm text-gray-600 mb-3">• Account for 12-month seasonal patterns</p>
       </section>
 
       <section className="mb-8 sm:mb-10">
@@ -414,16 +434,20 @@ print(f"MSE: {mse}")  # Output: MSE: 274185965.8119963`}</pre>
         </p>
         <p className="text-sm font-bold mb-2">Understanding the Error Metrics:</p>
         <div className="mb-3">
-          <p className="text-xs font-semibold">MAE (Mean Absolute Error) = 14,939 views</p>
-          <p className="text-xs text-gray-600 mt-1">Formula: MAE = (1/n) × Σ|actual - predicted|</p>
-          <p className="text-xs text-gray-600">What it means: On average, our predictions are off by about 15,000 views</p>
-          <p className="text-xs text-gray-600">Think of it as: The average "mistake" in our predictions</p>
+          <p className="text-sm font-semibold mb-2">MAE (Mean Absolute Error) = 14,939 views</p>
+          <div className="text-center mb-2">
+            <span className="text-lg font-medium" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>MAE = (1/n) × Σ|actual - predicted|</span>
+          </div>
+          <p className="text-sm text-gray-600">What it means: On average, our predictions are off by about 15,000 views</p>
+          <p className="text-sm text-gray-600">Think of it as: The average "mistake" in our predictions</p>
         </div>
         <div className="mb-3">
-          <p className="text-xs font-semibold">MSE (Mean Squared Error) = 274,185,965</p>
-          <p className="text-xs text-gray-600 mt-1">Formula: MSE = (1/n) × Σ(actual - predicted)²</p>
-          <p className="text-xs text-gray-600">What it means: This metric penalizes larger errors more heavily</p>
-          <p className="text-xs text-gray-600">Think of it as: A way to catch when predictions go really wrong</p>
+          <p className="text-sm font-semibold mb-2">MSE (Mean Squared Error) = 274,185,965</p>
+          <div className="text-center mb-2">
+            <span className="text-lg font-medium" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>MSE = (1/n) × Σ(actual - predicted)²</span>
+          </div>
+          <p className="text-sm text-gray-600">What it means: This metric penalizes larger errors more heavily</p>
+          <p className="text-sm text-gray-600">Think of it as: A way to catch when predictions go really wrong</p>
         </div>
         <div className="border border-gray-400 p-2 sm:p-3 rounded text-xs">
           <p className="mb-1"><strong>Mean Absolute Error:</strong> 14,939 views</p>
@@ -439,15 +463,123 @@ print(f"MSE: {mse}")  # Output: MSE: 274185965.8119963`}</pre>
       <section className="mb-8 sm:mb-10">
         <h2 className="text-base sm:text-lg font-bold mb-3">Key Insights & What I Learned</h2>
         <p className="text-sm mb-3">
-          Building this model taught me several fascinating things about TikTok viewing patterns and time series forecasting:
+          Building this TikTok view predictor was more challenging than I anticipated, but incredibly rewarding. I initially thought TikTok growth would be random and impossible to model accurately. I was wrong. The biggest surprise was discovering that TikTok isn't just growing steadily but actually accelerating over time, creating a viral snowball effect. Even more fascinating was finding a clear 12-month seasonal pattern hidden in all the apparent chaos. The hardest part was dealing with those intimidating optimization warnings that made me question everything, but persistence paid off. Achieving an MAE of just 15,000 views felt like a genuine breakthrough and taught me that even in social media's seemingly random world, mathematical patterns are waiting to be discovered.
         </p>
-        <ul className="list-disc list-inside ml-4">
-          <li className="mb-2 text-sm">The data required double differencing (d=2) to achieve stationarity - showing TikTok's growth isn't just linear, it's accelerating</li>
-          <li className="mb-2 text-sm">There's a strong 12-month seasonal cycle, suggesting annual content trends (holidays, summer breaks, etc.) significantly impact viewership</li>
-          <li className="mb-2 text-sm">The model successfully converged despite initial warnings - sometimes persistence pays off in machine learning</li>
-          <li className="mb-2 text-sm">With an MAE of ~15K views, the predictions are remarkably accurate considering how unpredictable viral content can be</li>
-          <li className="mb-2 text-sm">The forecasts show continued growth, which aligns with TikTok's expanding global user base</li>
-          <li className="mb-2 text-sm">The 95% confidence intervals provide a realistic range, acknowledging the inherent uncertainty in social media</li>
+      </section>
+
+      <section className="mb-8 sm:mb-10">
+        <h2 className="text-base sm:text-lg font-bold mb-3">References</h2>
+        <ul className="space-y-1 text-xs">
+          <li>
+            <a
+              href="https://www.geeksforgeeks.org/machine-learning/sarima-seasonal-autoregressive-integrated-moving-average/"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              SARIMA: Seasonal AutoRegressive Integrated Moving Average - GeeksforGeeks
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.statsmodels.org/stable/statespace.html#seasonal-autoregressive-integrated-moving-average-with-exogenous-regressors-sarimax"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Statsmodels SARIMAX Documentation
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://otexts.com/fpp3/arima.html"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Forecasting: Principles and Practice - ARIMA Models
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://machinelearningmastery.com/time-series-data-stationary-python/"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              How to Check if Time Series Data is Stationary with Python
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.statsmodels.org/stable/generated/statsmodels.tsa.stattools.adfuller.html"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Augmented Dickey-Fuller Test - Statsmodels
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://towardsdatascience.com/significance-of-acf-and-pacf-plots-in-time-series-analysis-2fa11a5d10a8"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Significance of ACF and PACF Plots in Time Series Analysis
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://pandas.pydata.org/docs/"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pandas Documentation - Data Analysis
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://numpy.org/doc/"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NumPy Documentation - Numerical Computing
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Scikit-learn: Regression Metrics (MAE, MSE)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://blog.hootsuite.com/tiktok-stats/"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              TikTok Statistics and Trends
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nature.com/articles/s41598-021-00382-6"
+              className="text-gray-700 hover:text-gray-900 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Predicting Social Media Engagement using Time Series Analysis
+            </a>
+          </li>
         </ul>
       </section>
 
